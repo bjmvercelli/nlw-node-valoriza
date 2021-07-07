@@ -3,15 +3,12 @@ import express from "express";
 
 import './database';
 
+import { router } from './routes';
+
 const app = express();
+app.use(express.json());
 
-app.get('/', (req, res) => {
-    return res.json({message: "Working!"});
-});
-
-app.post('/post', (req, res) => {
-    return res.json({message: "POST Route Working!"});
-})
+app.use(router);
 
 app.listen(3000, () => console.log("Server is running on port 3000"));
 
